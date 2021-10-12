@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177199834-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177199834-1');
+</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Covid-19 Türkiye</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="leaflet.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+	<link href="rhstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class= "navbar navbar-expand-md navbar-light bg-light sticky-top">
+<div class=container-fluid>
+	<a class="navbar-brand" href="index.html"><img src="img/logoo.png"></a>
+	<button class="navbar-toggler" type= "button" data-toggle="collapse" data-target="#navbarResponsive">
+		<span class="navbar-toggler-icon"></span> 
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+
+			<ul class="navbar-nav ml-auto">
+						<li class="nav-item">		
+                <a href="riskharitasi.html" class="btn btn-danger">Risk Haritası</a>
+                </li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">Anasayfa</a>
+				</li>
+
+
+				<li class="nav-item">
+					<a class="nav-link" href="https://covid19.who.int/?gclid=EAIaIQobChMInNGu7ZvG6wIVyPZRCh3p_Qp3EAAYASAAEgLFwfD_BwE">İstatistikler</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="iletisim.html">İletişim</a>
+				</li>
+
+			</ul>
+		</div>
+	
+</div>
+</nav>
+
+
+
+<div id="map" style="width: 100%; height: 70%;"></div>
+<script type="text/javascript">
+	
+// declare map object
+
+var mapSW=[0, 32768];
+var mapNE=[32768,0];
+
+
+var map = L.map('map').setView([-10, 10], 0);
+
+
+
+
+// reference the tiles
+
+L.tileLayer('haritalar/istand/{z}/{x}/{y}.png', {
+      continuousWorld: false,
+      noWrap: true,  
+      minZoom: 3,
+      maxZoom: 7,
+      crs: L.CRS.Simple,
+
+    
+
+}).addTo(map);
+
+map.setMaxBounds(new L.LatLngBounds(
+	map.unproject(mapSW, map.getMaxZoom()),
+	map.unproject(mapNE, map.getMaxZoom())
+	));
+
+
+
+var marker = L.marker([-10,10], {
+	draggable: true,
+}).addTo(map);
+marker.bindPopup('Our Heroes!').openPopup();
+
+map.on('click', function(e){
+	alert(e.latlng);
+});
+
+//MARKERS
+
+
+var marker = L.marker([68.98,-60.97]).addTo(map);
+var popup = marker.bindPopup('Beykoz').openPopup();
+
+var marker = L.marker([49.18,-70.11]).addTo(map);
+var popup = marker.bindPopup('Kavacık').openPopup();
+
+var marker = L.marker([43.83,-76.17]).addTo(map);
+var popup = marker.bindPopup('Kandilli').openPopup();
+
+var marker = L.marker([36.03,-77.05]).addTo(map);
+var popup = marker.bindPopup('Çengelköy').openPopup();
+
+var marker = L.marker([30.31,-81.44]).addTo(map);
+var popup = marker.bindPopup('Üsküdar').openPopup();
+
+var marker = L.marker([22.83,-89.57]).addTo(map);
+var popup = marker.bindPopup('Bağlarbaşı').openPopup();
+
+var marker = L.marker([15.2,-94.44]).addTo(map);
+var popup = marker.bindPopup('Haydarpaşa').openPopup();
+
+var marker = L.marker([9.31,-90.86]).addTo(map);
+var popup = marker.bindPopup('Kadıköy').openPopup();
+
+var marker = L.marker([-3.35,-76.76]).addTo(map);
+var popup = marker.bindPopup('Caddebostan').openPopup();
+
+var marker = L.marker([-7.4,-68.66]).addTo(map);
+var popup = marker.bindPopup('Suadiye').openPopup();
+
+var marker = L.marker([-13.28,-57.55]).addTo(map);
+var popup = marker.bindPopup('Küçükyalı').openPopup();
+
+var marker = L.marker([-10.68,-65.76]).addTo(map);
+var popup = marker.bindPopup('Bostancı').openPopup();
+
+var marker = L.marker([-16.85,-53.11]).addTo(map);
+var popup = marker.bindPopup('Maltepe').openPopup();
+
+var marker = L.marker([-32.38,-37.82]).addTo(map);
+var popup = marker.bindPopup('Kartal').openPopup();
+
+var marker = L.marker([-36.50,-31.16]).addTo(map);
+var popup = marker.bindPopup('Atalar').openPopup();
+
+var marker = L.marker([-43.86,-13.57]).addTo(map);
+var popup = marker.bindPopup('Pendik').openPopup();
+
+var marker = L.marker([-45.86,0.58]).addTo(map);
+var popup = marker.bindPopup('Kaynarca').openPopup();
+
+var marker = L.marker([-50.89,10.71]).addTo(map);
+var popup = marker.bindPopup('Esenyalı').openPopup();
+
+var marker = L.marker([-56.71,15.75]).addTo(map);
+var popup = marker.bindPopup('Tuzla').openPopup();
+
+var marker = L.marker([-65.91,38.94]).addTo(map);
+var popup = marker.bindPopup('Gebze Teknik Üniversitesi').openPopup();
+
+var marker = L.marker([-70.14,46.56]).addTo(map);
+var popup = marker.bindPopup('Darıca').openPopup();
+
+var marker = L.marker([-67,47]).addTo(map);
+var popup = marker.bindPopup('Osmangazi').openPopup();
+
+var marker = L.marker([-63.23,101.44]).addTo(map);
+var popup = marker.bindPopup('Tavşanlı').openPopup();
+
+var marker = L.marker([-41.189,93.33]).addTo(map);
+var popup = marker.bindPopup('Mollafeneri').openPopup();
+
+var marker = L.marker([-34.402,93.8]).addTo(map);
+var popup = marker.bindPopup('Cuma').openPopup();
+
+var marker = L.marker([-4.08,96.91]).addTo(map);
+var popup = marker.bindPopup('Ovacık').openPopup();
+
+var marker = L.marker([68.94,4.16]).addTo(map);
+var popup = marker.bindPopup('Öyümce').openPopup();
+
+var marker = L.marker([68.22,-26.36]).addTo(map);
+var popup = marker.bindPopup('Şevketpaşa').openPopup();
+
+var marker = L.marker([65.43,-38.95]).addTo(map);
+var popup = marker.bindPopup('Şirindere').openPopup();
+
+var marker = L.marker([64.42,-53.46]).addTo(map);
+var popup = marker.bindPopup('Elmalı').openPopup();
+
+var marker = L.marker([-48.7,-53.19]).addTo(map);
+var popup = marker.bindPopup('Büyükada').openPopup();
+
+var marker = L.marker([-44.99,-67.76]).addTo(map);
+var popup = marker.bindPopup('Heybeliada').openPopup();
+
+var marker = L.marker([-10.16,-43.90]).addTo(map);
+var popup = marker.bindPopup('Başıbüyük').openPopup();
+
+var marker = L.marker([-0.78,-52.69]).addTo(map);
+var popup = marker.bindPopup('Bakkalköy').openPopup();
+
+var marker = L.marker([5.12,-60.79]).addTo(map);
+var popup = marker.bindPopup('Ataşehir').openPopup();
+
+var marker = L.marker([11.54,-79.33]).addTo(map);
+var popup = marker.bindPopup('Ünalan').openPopup();
+
+var marker = L.marker([22.06,-63.15]).addTo(map);
+var popup = marker.bindPopup('Ümraniye').openPopup();
+
+var marker = L.marker([41,-64.27]).addTo(map);
+var popup = marker.bindPopup('Hekimbaşı').openPopup();
+
+var marker = L.marker([557.78,-62.56]).addTo(map);
+var popup = marker.bindPopup('Sarıkaya').openPopup();
+
+var marker = L.marker([-29.99,15.09]).addTo(map);
+var popup = marker.bindPopup('Kurtköy').openPopup();
+
+var marker = L.marker([19.84,-25.66]).addTo(map);
+var popup = marker.bindPopup('Çekmeköy').openPopup();
+
+var marker = L.marker([17.72,-5.91]).addTo(map);
+var popup = marker.bindPopup('Sancaktepe').openPopup();
+var marker = L.marker([17.93,-46.73]).addTo(map);
+var popup = marker.bindPopup('Şerifali').openPopup();
+
+
+
+
+
+
+
+</script>
+
+
+<!--- Footer -->
+<footer>
+	<div class="container-fluid padding">
+	<div class="row text-center">
+		
+		<div class="col-12">
+			<hr class="light-100">
+			<h6>Risk haritası görselleri T.C. Sağlık Bakanlığı'nın Hayat Eve Sığar uygulamasından alınmıştır.</h6>
+			<h6>&copy; S. Yağcı</h6>
+		</div>
+	</div>
+	</div>
+</footer>
+
+
+
+</body>
+</html>
+
+
+
+
